@@ -1,14 +1,14 @@
+import tiposDeProfesionales.*
 class Profesional {
-    const universidad 
-    const honorarios = self.honorariosPorHora()
-    const provincias = self.provinciasHabilitadas()
+    const tipoDeProfesional
+    const property universidad 
 
-    method honorariosPorHora() {
-
+    method honorarios() {
+        return tipoDeProfesional.honorariosPorHora()
     }
 
-    method provinciasHabilitadas() {
-
+    method provincias() {
+        return tipoDeProfesional.provinciasHabilitadas()
     }
 
 }

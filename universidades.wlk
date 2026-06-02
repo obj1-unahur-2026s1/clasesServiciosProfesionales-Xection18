@@ -1,4 +1,4 @@
 class Universidad {
-    const provincia 
-    const honorariosDeProfesionales 
+    const property provincia
+    const property honorariosRecomendados
 }
