@@ -37,4 +37,10 @@ class Empresa {
     method esDeGenteAcotada() {
         return profesionales.all({profesional => profesional.provinciasHabilitadas().size() >= 3})
     }
+
+    // ETAPA 2
+
+    method puedeSatisfacerA(solicitante) {
+        return profesionales.any({profesional => solicitante.puedeSerAtentidaPor(profesional)})
+    }
 }
