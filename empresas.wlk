@@ -1,6 +1,6 @@
 class Empresa {
     const profesionales = []
-    method honorarioDeReferencia() = 1000
+    const property honorarioDeReferencia
 
     method contrarProfesional(profesional) {
         profesionales.add(profesional)

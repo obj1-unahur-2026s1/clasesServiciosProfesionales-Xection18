@@ -1,8 +1,8 @@
 import provincias.*
 class ProfesionalesVinculadosAUnaUniversidad {
-    const universidad
+    const property universidad
 
-    method honorariosPorHora() {
+    method honorarios() {
         return universidad.honorariosRecomendados()
     }
 
@@ -15,7 +15,7 @@ class ProfesionalesAsociadosDelLitoral {
     const provinciasHabilitadas = [santaFe, entreRios, corrientes]
     const property universidad
 
-    method honorariosPorHora() {
+    method honorarios() {
         return 3000
     }
 
@@ -25,7 +25,7 @@ class ProfesionalesAsociadosDelLitoral {
 }
 
 class ProfesionalesLibres {
-    const property honorariosPorHora
+    const property honorarios
     const property provinciasHabilitadas
     const property universidad
 }

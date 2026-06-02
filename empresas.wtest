@@ -1,0 +1,44 @@
+import profesionales.*
+import universidades.*
+import empresas.*
+import provincias.*
+describe "Test de la etapa 1" {
+    const universidadDeSanMartin = new Universidad(provincia = buenosAires, honorariosRecomendados = 3500)
+    const universidadDeRosario = new Universidad(provincia = santaFe, honorariosRecomendados = 2800)
+    const universidadDeCorrientes = new Universidad(provincia = corrientes, honorariosRecomendados = 4200)
+    const universidadDeHurlingham = new Universidad(provincia = buenosAires, honorariosRecomendados = 8800)
+
+    const matiasMuller = new ProfesionalesVinculadosAUnaUniversidad(universidad = universidadDeSanMartin)
+    const juana = new ProfesionalesVinculadosAUnaUniversidad(universidad = universidadDeRosario)
+    const melina = new ProfesionalesAsociadosDelLitoral(universidad = universidadDeCorrientes)
+    const rocio = new ProfesionalesLibres(universidad = universidadDeHurlingham, honorarios = 5000, provinciasHabilitadas = [buenosAires, santaFe, cordoba])
+    const luciana = new ProfesionalesLibres(universidad = universidadDeRosario, honorarios = 3200, provinciasHabilitadas = [santaFe, corrientes, entreRios, entreRios])
+    const empresaPanchoConPapas = new Empresa(profesionales = [juana, melina, rocio, luciana], honorarioDeReferencia = 3500)
+
+
+    test "dos de sus profesionales estudiaron en Rosario" {
+        assert.equals(2, empresaPanchoConPapas.CuantosEstudiaronEnUnaUniversidad(universidadDeRosario))
+    }
+
+    test "uno de sus profesionales estudiaron en Hurlingham" {
+        assert.equals(1, empresaPanchoConPapas.CuantosEstudiaronEnUnaUniversidad(universidadDeHurlingham))
+    }
+
+    test "ninguno de sus profesionales estudiaron en (o sea cero) en San Martín." {
+        assert.equals(0, empresaPanchoConPapas.CuantosEstudiaronEnUnaUniversidad(universidadDeSanMartin))
+    }
+
+    test "Rocio es la unica profesional cara" {
+        assert.equals([rocio], empresaPanchoConPapas.profesionalesQueTienenHonorariosMayoresAHonorarioDeReferencia())
+    }
+
+    test "como universidades formadoras, a las de Rosario, Corrientes y Hurlingham." {
+        assert.equals([universidadDeRosario, universidadDeCorrientes, universidadDeHurlingham].asSet(), empresaPanchoConPapas.universidadesEnLasQueEstudiaronSusProfesionales())
+    }
+    
+    test "Juana es la profesional mas barata" {
+        assert.equals(juana, empresaPanchoConPapas.profesionalMasBarato())
+    }
+
+
+}
