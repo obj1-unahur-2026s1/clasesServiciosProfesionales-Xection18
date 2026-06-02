@@ -7,7 +7,7 @@ class ProfesionalesVinculadosAUnaUniversidad {
     }
 
     method provinciasHabilitadas() {
-        return universidad.provincia()
+        return universidad.provincia().asList()
     }
 }
 
