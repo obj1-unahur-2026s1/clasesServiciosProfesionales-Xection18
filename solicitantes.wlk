@@ -28,7 +28,6 @@ class Institucion {
     method puedeSerAtentidaPor(profesional) {
         return universidades.any({universidad => profesional.universidad() == universidad})
     }
-
 }
 
 class Club {

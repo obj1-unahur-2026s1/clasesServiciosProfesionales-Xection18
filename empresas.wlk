@@ -1,6 +1,15 @@
 class Empresa {
     const profesionales = []
+    const clientes = []
     const property honorarioDeReferencia
+
+    method agregarCliente(cliente) {
+        clientes.add(cliente)
+    }
+
+    method eliminarCliente(cliente) {
+        clientes.remove(cliente)
+    }
 
     method contrarProfesional(profesional) {
         profesionales.add(profesional)
@@ -42,5 +51,15 @@ class Empresa {
 
     method puedeSatisfacerA(solicitante) {
         return profesionales.any({profesional => solicitante.puedeSerAtentidaPor(profesional)})
+    }
+
+    method darServicio(solicitante) {
+        var profesionalApto = profesionales.filter({profesional => solicitante.puedeSerAtentidaPor(profesional)}).anyOne()
+
+        if (solicitante.puedeSerAtentidaPor(profesionalApto)) {
+            profesionalApto.cobrarImporte(profesionalApto.honorarios())
+            self.agregarCliente(solicitante)
+        }   
+
     }
 }
